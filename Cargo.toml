@@ -1,0 +1,29 @@
+[package]
+name = "esp-rust-app"
+version = "0.1.0"
+authors = ["Alwin Arrasyid <alwin.ridd@gmail.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-sys = { version = "0.31.6", features = ["binstart"] }
+esp-idf-svc = "0.42.1"
+esp-idf-hal = "0.38"
+embedded-svc = "0.22"
+embedded-hal = "0.2"
+embedded-graphics = "0.7"
+
+
+[build-dependencies]
+embuild = "0.29"
+anyhow = "1"
